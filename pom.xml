@@ -19,6 +19,20 @@
 		<url>http://github.com/qapital/plaid-java</url>
 		<tag>HEAD</tag>
 	</scm>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>qapital-snapshots</id>
+			<name>Qapital Snapshot Repository</name>
+			<url>https://nexus3.office.qptlops.net/repository/maven-snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>qapital-releases</id>
+			<name>Qapital Releases Repository</name>
+			<url>https://nexus3.office.qptlops.net/repository/maven-releases/</url>
+		</repository>
+	</distributionManagement>
+
 	<organization>
 		<name>Qapital Inc.</name>
 		<url>http://www.qapital.com</url>
