@@ -22,12 +22,12 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>qapital-snapshots</id>
+			<id>maven-snapshots</id>
 			<name>Qapital Snapshot Repository</name>
 			<url>https://nexus3.office.qptlops.net/repository/maven-snapshots/</url>
 		</snapshotRepository>
 		<repository>
-			<id>qapital-releases</id>
+			<id>maven-releases</id>
 			<name>Qapital Releases Repository</name>
 			<url>https://nexus3.office.qptlops.net/repository/maven-releases/</url>
 		</repository>
