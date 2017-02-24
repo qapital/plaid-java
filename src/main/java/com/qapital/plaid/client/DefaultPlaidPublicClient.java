@@ -4,6 +4,8 @@ import com.qapital.plaid.client.exception.PlaidClientsideException;
 import com.qapital.plaid.client.http.HttpDelegate;
 import com.qapital.plaid.client.http.HttpResponseWrapper;
 import com.qapital.plaid.client.http.PlaidHttpRequest;
+import com.qapital.plaid.client.response.CategoriesResponse;
+import com.qapital.plaid.client.response.Category;
 import com.qapital.plaid.client.response.InstitutionsResponse;
 import org.apache.commons.lang.StringUtils;
 
@@ -32,6 +34,13 @@ public class DefaultPlaidPublicClient implements PlaidPublicClient {
         }
         HttpResponseWrapper<InstitutionsResponse> response = httpDelegate.doPost(request, InstitutionsResponse.class);
         return response.getResponseBody();
+    }
+
+    @Override
+    public CategoriesResponse getAllCategories() {
+        PlaidHttpRequest request = new PlaidHttpRequest("/categories");
+        HttpResponseWrapper<Category[]> response = httpDelegate.doGet(request, Category[].class);
+        return new CategoriesResponse(response.getResponseBody());
     }
 
     @Override
