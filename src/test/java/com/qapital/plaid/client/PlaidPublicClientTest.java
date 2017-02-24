@@ -1,5 +1,6 @@
 package com.qapital.plaid.client;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.HashMap;
@@ -7,6 +8,8 @@ import java.util.Map;
 
 import com.qapital.plaid.client.exception.PlaidClientsideException;
 import com.qapital.plaid.client.http.HttpDelegate;
+import com.qapital.plaid.client.response.CategoriesResponse;
+import com.qapital.plaid.client.response.Category;
 import com.qapital.plaid.client.response.Institution;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -17,14 +20,13 @@ import com.qapital.plaid.client.http.ApacheHttpClientHttpDelegate;
 import com.qapital.plaid.client.response.InstitutionsResponse;
 
 public class PlaidPublicClientTest {
-    
-    private CloseableHttpClient httpClient;
+
     private PlaidPublicClient plaidPublicClientWithoutCredentials;
     private PlaidPublicClient plaidPublicClientWithCredentials;
 
     @Before
     public  void setup() {
-        httpClient = HttpClients.custom().disableContentCompression().build();
+        CloseableHttpClient httpClient = HttpClients.custom().disableContentCompression().build();
         HttpDelegate httpDelegate = new ApacheHttpClientHttpDelegate("https://tartan.plaid.com", httpClient);
         plaidPublicClientWithoutCredentials = new DefaultPlaidPublicClient.Builder()
                 .withHttpDelegate(httpDelegate)
@@ -48,6 +50,20 @@ public class PlaidPublicClientTest {
         }
 
         assertNotNull(map.get("Bank of America"));
+    }
+
+    @Test
+    public void getAllCategories() throws Exception {
+        CategoriesResponse categories = plaidPublicClientWithoutCredentials.getAllCategories();
+        assertNotNull(categories);
+
+        assertFalse(categories.getCategories().isEmpty());
+
+        Category category = categories.getCategories().get(0);
+        assertNotNull(category.getId());
+        assertNotNull(category.getType());
+        assertNotNull(category.getHierarchy());
+        assertFalse(category.getHierarchy().isEmpty());
     }
 
     @Test(expected = PlaidClientsideException.class)
