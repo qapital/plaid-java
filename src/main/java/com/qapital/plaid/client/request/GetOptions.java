@@ -14,6 +14,7 @@ public class GetOptions {
 	private String gte;
 	private String lte;
 	private Boolean includeOriginalDescription;
+	private Boolean includeLastUpdated;
 	
 	public Boolean isPending() {
 		return pending;
@@ -62,5 +63,14 @@ public class GetOptions {
 
 	public void setIncludeOriginalDescription(Boolean includeOriginalDescription) {
 		this.includeOriginalDescription = includeOriginalDescription;
+	}
+
+	@JsonProperty("include_last_updated")
+	public Boolean isIncludeLastUpdated() {
+		return includeLastUpdated;
+	}
+
+	public void setIncludeLastUpdated(Boolean includeLastUpdated) {
+		this.includeLastUpdated = includeLastUpdated;
 	}
 }
