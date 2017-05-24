@@ -13,7 +13,11 @@ import com.qapital.plaid.client.request.ConnectOptions;
 import com.qapital.plaid.client.request.Credentials;
 import com.qapital.plaid.client.request.GetOptions;
 import com.qapital.plaid.client.request.InfoOptions;
-import com.qapital.plaid.client.response.*;
+import com.qapital.plaid.client.response.AccountsResponse;
+import com.qapital.plaid.client.response.InfoResponse;
+import com.qapital.plaid.client.response.MessageResponse;
+import com.qapital.plaid.client.response.PlaidUserResponse;
+import com.qapital.plaid.client.response.TransactionsResponse;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.HashMap;
@@ -21,6 +25,9 @@ import java.util.Map;
 
 
 public class DefaultPlaidUserClient implements PlaidUserClient {
+
+
+    public final static String TEST_USER_ACCESS_TOKEN_PREFIX = "test_";
 
     private String accessToken;
 
@@ -47,6 +54,11 @@ public class DefaultPlaidUserClient implements PlaidUserClient {
     public String getAccessToken() {
 
         return this.accessToken;
+    }
+
+    @Override
+    public boolean isProductionAccount() {
+        return StringUtils.isNotEmpty(accessToken) && !accessToken.startsWith(TEST_USER_ACCESS_TOKEN_PREFIX);
     }
 
     @Override
