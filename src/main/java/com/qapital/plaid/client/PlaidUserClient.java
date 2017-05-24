@@ -9,8 +9,8 @@ import com.qapital.plaid.client.request.InfoOptions;
 import com.qapital.plaid.client.response.AccountsResponse;
 import com.qapital.plaid.client.response.InfoResponse;
 import com.qapital.plaid.client.response.MessageResponse;
-import com.qapital.plaid.client.response.TransactionsResponse;
 import com.qapital.plaid.client.response.PlaidUserResponse;
+import com.qapital.plaid.client.response.TransactionsResponse;
 
 import java.util.Map;
 
@@ -19,6 +19,8 @@ public interface PlaidUserClient {
     void setAccessToken(String accesstoken);
 
     String getAccessToken();
+
+    boolean isProductionAccount();
 
     PlaidUserResponse exchangeToken(String publicToken);
 
