@@ -2,7 +2,7 @@ package com.qapital.plaid.client.exception;
 
 import com.qapital.plaid.client.response.UnknownResponse;
 
-public class PlaidServersideUnknownResponseException extends RuntimeException {
+public class PlaidServersideUnknownResponseException extends PlaidRuntimeException {
     private UnknownResponse unknownResponse;
     private int httpStatusCode;
 

@@ -2,7 +2,7 @@ package com.qapital.plaid.client.exception;
 
 import com.qapital.plaid.client.response.ErrorResponse;
 
-public class PlaidServersideException extends RuntimeException {
+public class PlaidServersideException extends PlaidRuntimeException {
     
     private ErrorResponse errorResponse;
     private int httpStatusCode;

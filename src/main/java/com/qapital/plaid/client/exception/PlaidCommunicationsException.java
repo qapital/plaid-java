@@ -1,6 +1,6 @@
 package com.qapital.plaid.client.exception;
 
-public class PlaidCommunicationsException extends RuntimeException {
+public class PlaidCommunicationsException extends PlaidRuntimeException {
 
     public PlaidCommunicationsException(String message, Throwable cause) {
         super(message, cause);
