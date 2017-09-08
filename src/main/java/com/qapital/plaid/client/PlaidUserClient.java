@@ -64,6 +64,8 @@ public interface PlaidUserClient {
 
     InfoResponse info(Credentials credentials, String type, InfoOptions options);
 
+    InfoResponse info(InfoOptions options);
+
     TransactionsResponse addProduct(String product, ConnectOptions options);
 
     HttpDelegate getHttpDelegate();

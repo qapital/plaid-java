@@ -100,11 +100,19 @@ public class PlaidUserClientTest {
         }
     }
 
-
     @Test
     public void testInfoWellsFargo() {
     	Credentials testCredentials = new Credentials("plaid_test", "plaid_good");
         InfoResponse response = plaidUserClient.info(testCredentials, "wells", null);
+
+        assertEquals("test_wells",response.getAccessToken());
+        assertNotNull(response.getInfo());
+    }
+
+    @Test
+    public void testInfoWellsFargoWithToken() {
+        plaidUserClient.setAccessToken("test_wells");
+        InfoResponse response = plaidUserClient.info(null);
 
         assertEquals("test_wells",response.getAccessToken());
         assertNotNull(response.getInfo());

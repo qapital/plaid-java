@@ -26,7 +26,6 @@ import java.util.Map;
 
 public class DefaultPlaidUserClient implements PlaidUserClient {
 
-
     public final static String TEST_USER_ACCESS_TOKEN_PREFIX = "test_";
 
     private String accessToken;
@@ -361,6 +360,19 @@ public class DefaultPlaidUserClient implements PlaidUserClient {
          requestParams.put("options", options);
 
          return handlePost("/info", requestParams, InfoResponse.class);
+    }
+
+    @Override
+    public InfoResponse info(InfoOptions options) {
+
+        if (StringUtils.isEmpty(accessToken)) {
+            throw new PlaidClientsideException("No accessToken set");
+        }
+
+        Map<String, Object> requestParams = new HashMap<String, Object>();
+        requestParams.put("options", options);
+
+        return handlePost("/info/get", requestParams, InfoResponse.class);
     }
 
     private <T extends PlaidUserResponse> T handleMfa(String path, Object mfa, String type, Class<T> returnTypeClass) throws PlaidMfaException {
