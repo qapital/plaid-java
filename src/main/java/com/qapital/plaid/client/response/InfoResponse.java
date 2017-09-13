@@ -117,7 +117,7 @@ public class InfoResponse extends PlaidUserResponse {
 		public void setPrimary(Boolean primary) {
 			this.primary = primary;
 		}
-		@JsonProperty("address")
+		@JsonProperty("data")
 		public AddressDetails getAddressDetails() {
 			return addressDetails;
 		}
