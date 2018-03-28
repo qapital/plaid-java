@@ -1,6 +1,14 @@
 plaid-java
 ==========
 
+___
+
+# This fork is retired.
+
+The Qapital fork of Plaid Java has been retired in favor of the official 2.0 API (https://github.com/plaid/plaid-java)
+___
+
+
 Java Bindings for the Plaid API (https://www.plaid.com/docs)
 
 These bindings are under active development and currently support the main usecases of the Plaid API. There are some parts that are as yet unimplemented so pull requests are welcome!
